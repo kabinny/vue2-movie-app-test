@@ -106,9 +106,5 @@ fetchMovie({
 })
 */
 async function _fetchMovie(payload) {
-  const { title, type, year, page, id } = payload
-  const url = id // id가 있을 때, 없을 때
-    ? `https://www.omdbapi.com/?apikey=7035c60c&i=${id}&plot=full`
-    : `https://www.omdbapi.com/?apikey=7035c60c&s=${title}&type=${type}&y=${year}&page=${page}`
-  return await axios.get(url)
+  return await axios.post('/.netlify/functions/movie', payload)
 }
